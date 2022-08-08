@@ -270,6 +270,145 @@ print(a)
 #疑点：怎么用tuple() 函数，将生成器对象转换成元组
 ```
 
+# 运算符
+## 算数运算符
+```python
+a = 21
+b = 10
+c = 0
+c = a + b
+print('1-c的值为：',c)
+c = a - b
+print('2-c的值为：',c)
+c = a * b
+print('3-c的值为：',c)
+c = a / b
+print('4-c的值为：',c)
+c = a % b
+print('5-c的值为:',c)
+c = a ** b
+print('6-c的值为：',c)
+c = a // b
+print('6-c的值为：',c )
+```
+
+## 比较运算符
+```python
+a = 21
+b = 10
+c = 0
+if(a == b ):
+    print('1-a等于b')
+else:
+    print('1-a不等于b')
+
+if a!=b:
+    print('2-a不等于b')
+else:
+    print('2-a等于b')
+
+if a<b:
+    print('3-a小于b')
+else:
+    print('3-a大于b')
+
+if a>b:
+    print('4-a大于b')
+else:
+    print('4-a小于b')
+
+if a <= b :
+    print( '5-a 小于等于b')
+else:
+    print('5-a大于b')
+
+if b >= a :
+    print('6-b大于等于a')
+else:
+    print('6-b小于a')
+```
+
+## python的赋值运算
+```python
+# 假设变量a为10，变量b为20
+a = 21
+b = 10
+c = 0
+
+c = a + b
+print('1-c:',c)
+
+c += a
+print('2-c:',c )
+
+c *=a
+print('3-c:',c)
+
+c /=a
+print('4-c:',c)
+
+c = 2
+c %=a
+print('5-c:',c)
+
+c **=a
+print('6-c:',c)
+
+c //=a
+print('7-c:',c)
+```
+
+## python位运算符
+```python
+# 二进制的计算 &，|，^，~，<<，>>
+a=60
+b=13
+c=0
+c=a&b  #如果两个相应位都为1,则该位的结果为1,否则为0
+print('1-c:',c)
+
+c=a | b  #只要对应的二个二进位有一个为1时，结果位就为1。
+print('2-c:',c)
+
+c=a ^ b #当两对应的二进位相异时，结果为1
+print('3-c:',c)
+
+c= ~ a #对数据的每个二进制位取反,即把1变为0,把0变为1。~x 类似于 -x-1
+print('4-c:',c)
+
+c =a << 2 #运算数的各二进位全部左移若干位，二进制左移几位就是后面加几个0，前面去掉几位
+print('5-c:',c)
+
+c=a >> 2 #运算数的各二进位全部右移若干位，二进制右移几位就是后面去几位，前面加几位（正数加0，负数加1）
+print('6-c:',c)
+```
+
+## 逻辑运算符
+```python
+# not and or,not:真变假假变真、and：两个为真才为真、or：两个为假才为假
+print( 2 >0 )
+print(not 2>0 and 3>0 or 4>0 )
+```
+
+## 成员运算符
+```python
+a = 10
+b = 20
+list = [1,2,3,4,5,6]
+print( a in list )
+```
+
+## 身份运算符
+```python
+#is,is not;  is和==的区别，is判断是不是同一个，==判断值是否相等
+a = 20
+b = 20
+print(a is b)
+print( id(a) == id(b) )
+```
+
+
+
 
 
 
