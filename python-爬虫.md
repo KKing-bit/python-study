@@ -5,7 +5,7 @@
 3、安装python解释器：//www.python.org/  - Downloads - 选择python版本号<br>
 4、安装VScode，官网地址：https://code.visualstudio.com/ <br>
 
-# 语法  
+# 一、语法  
 ## 行和缩进：同一个代码语句缩进需要相同  
 ```python
 if True:  
@@ -178,7 +178,7 @@ print(tinydict)
 print(tinydict.keys())
 print(tinydict.values())
 ```
-# 数据类型转换
+# 二、数据类型转换
 ## 隐式类型互换
 ```python 
 num_int = 123
@@ -214,7 +214,7 @@ num_str = '456'
 num_str = int(num_str)
 print(num_int + num_str)
 ```
-#python 推导式
+# 三、推导式
 ## 列表式推导
 ```python 
 for变量 in列表 if条件
@@ -270,7 +270,7 @@ print(a)
 #疑点：怎么用tuple() 函数，将生成器对象转换成元组
 ```
 
-# 运算符
+# 四、运算符
 ## 算数运算符
 ```python
 a = 21
