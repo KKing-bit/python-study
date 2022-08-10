@@ -442,8 +442,191 @@ print(f'{x+1=}')
 ```
 
 # 编程第一步
+```python
+#斐波纳契数列:第三项开始，每一项都是前两项之和
+a , b =0 , 1
+while b<10:
+    print(b)
+    a,b = b,b+a
+```
+```python
+#数列输出到一行，用end
+a , b=0 , 1
+while b <1000:
+    print(b, end=',')
+    a,b=b,b+a
+```
 
+# 条件控制
+```python
+#if语句关键词，if elif else,条件后面要加：，表示满足条件后执行
+#算算狗的年龄脚本
+age = int(input('请输入你家狗的年龄:'))
+print('')
+if age <= 0:
+    print('你在逗我吧')
+elif age == 1:
+    print('相当于14岁的人')
+elif age == 2:
+    print('相当于22岁的人')
+elif age > 2:
+    human =22+(age - 2)*5
+    print('相当于人类年龄：', human )
+```
+```python
+#数字猜谜游戏脚本
+number = 7
+guess = -1
+print('数字猜谜游戏！')
+while guess != number:
+    guess = int(input('请输入你猜的数字： '))
 
+    if guess == number :
+        print('恭喜你猜对了！')
+    elif guess < number:
+        print('猜的数字太小了!!')
+    elif guess > number:
+        print('猜的数字太大了！！')
+```
+```python
+#if嵌套语句
+num=int(input('请输入一个数字：'))
+if num%2 == 0:
+    if num%3 == 0:
+        print('你输入的数字可以整除2 和 3 ')
+    else:
+        print('你输入的数字可以整除2 但不能整除3')
+else:
+    if num%3 == 0:
+        print('你输入的数字可以整除3，但不能整除2')
+    else:
+        print('你输入的数字不能整除2和3 ')
+```
+
+# 循环语句
+## while 循环
+```python
+# 计算1~100的和
+n = 100
+sum = 0
+counter = 1
+while counter <= n:
+    sum = sum + counter
+    counter += 1
+print('1到 %d 的和为： %d'  %(n,sum))
+```
+```python
+# 无限循环
+var = 1
+while var == 1:
+    num = int(input('请输入一个数字 ： '))
+    print('你输入的数字是：', num )
+print('good bye!')
+```
+```python
+#while循环使用else
+count = 0
+while count < 5:
+    print(count, '小于5')
+    count = count + 1
+else:
+    print(count, '大于或等于5')
+```
+```python
+#简单语句组
+#如果只打印一个语句，那可以与while写成一行，无限循环，用control c打断
+flag = 1
+while(flag):print("欢迎光临")
+print('good bye!')
+```
+
+## for循环
+```python
+languages = ['c','c++','per1','python']
+for x in languages:
+    print(x)
+```
+```python
+#for循环的break语句
+sites = ['baidu' ,'google' ,'runoob','taobao']
+for site in sites:
+    if site == 'runoob':
+        print('菜鸟教程')
+        break
+    print('循环数据' + site)
+else:
+    print('没有循环语句')
+print('完成循环')
+```
+
+## range()函数
+```python
+for i in range(5):
+    print(i)
+#指定范围
+for i in range(5,9):
+    print(i)
+#指定步长
+for i in range(0,10,4):
+    print(i)
+#序列索引
+a = ['google','baidu','runoob','taobao','qq']
+for i in range(len(a)):
+    print(i,a[i])
+
+#创建列表
+print(list(range(5)))
+```
+
+## break 和 continue 语句及循环中的 else 子句
+```python
+#break是打断循环，结束；continue跳过当前语句，继续循环
+n = 5
+while n > 0:
+    n -= 1
+    if n == 2:
+        break
+    print(n)
+print('循环结束。')
+```
+```python
+#continue 案例
+n = 5
+while n > 0:
+    n -= 1
+    if n == 2:
+        continue
+    print(n)
+print('循环结束。')
+```
+```python
+#for in案例
+for letter in 'runoob':
+    if letter == 'b':
+        break
+    print('当前字母为：',letter)
+```
+```python
+#while案例
+var = 10
+while var > 0:
+    print('当前变量为：', var)
+    var = var - 1
+    if var == 5:
+        break
+print('good bye!')
+
+```
+
+## else子句
+```python
+for n in range(2,10):
+    for x in range(2,n):
+        if n%x == 0:
+            print(n,'等于',x,'*',n//x)
+    else:
+        print(n,'是质数')
+```
 
 
 
