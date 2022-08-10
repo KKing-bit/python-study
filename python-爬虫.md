@@ -627,6 +627,34 @@ for n in range(2,10):
     else:
         print(n,'是质数')
 ```
+## 循环中的else
+```python
+#for else 、 while else
+#下载一个视频，从0~100%，下载完成后，显示下载完成，否则不显示:用while else
+
+i = 0
+while i <= 100:
+    if i == 60:
+        print('下载非法文件，终止下载')
+        i += 1
+    print(f'下载进度：{i}%')
+    i += 1
+else:
+    print('下载完成')
+```
+```python
+#下载一个视频，从0~100%，下载完成后，显示下载完成，否则不显示：用for else
+
+for i in range(0,101):
+    if i == 60:
+        print('下载非法文件，终止下载')
+        continue
+    print(f'下载进度：{i}%')
+else:
+    print('下载完成')
+    
+```
+
 
 
 
