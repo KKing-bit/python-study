@@ -655,6 +655,256 @@ else:
     
 ```
 
+# 面向对象
+```python
+类(Class): 相同属性对象的集合，它定义了该集合中每个对象共有的属性和方法
+方法：类中定义的函数
+类变量、数据成员、方法重写、局部变量、实例变量、继承、实例化、对象
 
+class myclass:
+    i = 12345
+    def f(self):
+       return 'hello world'
+x = myclass()
+print('myclass的属性为：', x.i)
+print('myclass的属性为：', x.f())
+```
 
+## init的用法
+```python
+class complex:
+    def __init__(self,realpart,imagpart):
+        self.r = realpart
+        self.i = imagpart
+x = complex(3.0, 4.5)
+print(x.r,x.i)
+#类的内部，def来定义一个构造方法，方法里面又必须包含self
+class people:
+    name=''
+    age =0
+    _weight = 0
+    def __init__(self,n,a,w):
+        self.name = n
+        self. age = a
+        self._weight = w
+    def speak(self):
+        print('%s说：我今年%d岁。' %(self.name , self.age) )
+p = people('runoob',19,170)
+p.speak()
+#单继承
+class people:
+    name=''
+    age = 0
+    _weight = 0
+    def __init__(self,n,a,w):
+        self.name = n
+        self. age = a
+        self._weight = w
+
+class student(people):
+    grade = ''
+    def __init__(self,n,a,w,g):
+        people.__init__(self, n, a, w)
+        self.grade= g
+    def speak(self):
+        print('%s说：我今年%d岁，我在读%g年级。' %(self.name , self.age,self.grade) )
+s = student('Joe',30,170,4)
+s.speak()
+
+# 多继承
+#父1
+class people:
+    name=''
+    age =0
+    _weight = 0
+    def __init__(self,n,a,w):
+        self.name = n
+        self. age = a
+        self._weight = w
+#子1
+class student(people):
+    grade = ''
+    def __init__(self,n,a,w,g):
+        people.__init__(self, n, a, w)
+        self.grade= g
+#父2
+class speaker():
+    topic =''
+    name =''
+    def __init__(self,n,t):
+        self.name = n
+        self.topic = t
+    def speak(self):
+        print('我叫%s，我是一个演说家，我今天演讲的题目是%s。' %(self.name , self.topic) )
+#多重混合
+class sample(speaker,student):
+    a=''
+    def __init__(self,n,a,w,g,t):
+        student.__init__(self, n, a, w, g)
+        speaker.__init__(self,n,t)
+test = sample('Joe',30,170,4,'python')
+test.speak()
+
+```
+## 方法重写
+```python
+class parent:
+    def mymethod(self):
+        print('调用父类方法')
+class child(parent):
+    def mymethod(self):
+        print('调用子分类方法')
+c = child()
+c.mymethod()
+super(child,c).mymethod()
+```
+## 类属性和方法
+```python
+class justcounte:
+    __secretcount = 0
+    publiccount =0
+    def count(self):
+        self.__secretcount +=1
+        self.publiccount +=1
+        print(self.__secretcount)
+counter = justcounte()
+counter.count()
+counter.count()
+print(counter.publiccount)
+print(counter.__secretcouont)
+```
+
+## 类的私有方法
+```python
+class site:
+    def __init__(self,name,url):
+        self.name = name
+        self.__url=url
+    def who(self):
+        print('name；',self.name)
+        print('url:',self.__url)
+    def __foo(self):
+        print('这是私有方法')
+    def foo(self):
+        print('这是共有方法')
+        self.__foo()
+x = site('菜鸟教程', 'www.runoob.com')
+x.who()
+x.foo()
+x.__foo()
+```
+
+## 运算载重符
+```python
+class vector:
+    def __init__(self,a,b):
+        self.a=a
+        self.b=b
+    def __str__(self):
+        return 'vector %d%d'%(self.a,self.b)
+    def __add__(self, other):
+        return vector(self.a + other.a,self.b + other.b)
+v1 = vector(2,10)
+v2 = vector(5,-2)
+print(v1 + v2)
+```
+
+# 迭代器和生成器
+```python
+list= [1,2,3,4]
+it = iter(list)
+print(next(it))
+```
+
+## 迭代器用于for语句
+```python
+list = [1,2,3,4]
+it = iter(list)
+for x in it:
+    print(x,end='')
+```
+
+## sys模块：从程序外部获取参数
+```python
+import sys
+a = sys.argv[0]
+print(a)
+#sys.stdout与print
+import sys
+aa = sys.stdin.readline()
+bb= input('请输入:')
+
+sys.stdout.write(str(len(aa)) + '\n')
+
+print(len(bb))
+```
+
+## next 函数
+```python
+import sys
+list = [1,2,3,4]
+it = iter(list)
+while True:
+    try:
+        print(next(it))
+    except StopIteration:
+        sys.exit()
+```
+
+## 创建迭代器
+```python
+class mynumbers:
+    def __iter__(self):
+        self.a = 1
+        return self
+    def __next__(self):
+        x = self.a
+        self.a += 1
+        return x
+myclass = mynumbers()
+myiter = iter(myclass)
+
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+print(next(myiter))
+```
+## StopIteration 结束迭代
+```python
+class mynumbers:
+    def __iter__(self):
+        self.a = 1
+        return self
+    def __next__(self):
+        if self.a <= 20:
+            x = self.a
+            self.a += 1
+            return x
+        else:
+            raise StopIteration
+myclass = mynumbers()
+myiter = iter(myclass)
+
+for x in myiter:
+    print(x)
+```
+## 生成器
+```python
+import sys
+def fibonacci(n):
+    a,b,counter = 0,1,0
+    while True:
+        if (counter > n):
+            return
+        yield  a
+        a,b = b ,a+b
+        counter +=1
+f = fibonacci(10)
+while True:
+    try:
+        print(next(f),end='')
+    except StopIteration:
+        sys.exit()
+```
 
