@@ -907,4 +907,258 @@ while True:
     except StopIteration:
         sys.exit()
 ```
+## python函数
+```python
+#函数就是组织好，可重复使用，实现功能的代码断；函数有内建函数，和自建函数
+#自建函数的特点：①  以def开头+名称+（） ②  参数和自变量要放在（）中    ③ 第一行可以放置文档说明   ④函数以：起始，并且缩进    ⑤ return结束函数，返回值，没有表达式就返回none
+#定义函数hello  world
+def hello ():
+    print('hello world')
+hello()
+#比较两个数字，输出最大的那个数字
+def max(a,b):
+    if a > b:
+        return a
+    else:
+        return b
+a = 4
+b = 5
+print(max(a,b))
+```
+```python
+#计算面积函数
+def area( width,height):
+    return width * height
+
+def print_welcome(name):
+    print('welcome:',name)
+print_welcome('runoob')
+w = 4
+h = 5
+print('width=',w ,'height=',h,'area=',area(w , h ))
+```
+```python
+# 函数调用：定义函数之后，可以用另一个函数调用，也可以用python命令符执行
+#定义函数
+def printme( str ):
+    #打印任何传入的字符串
+    print(str)
+    return
+printme("我要调用自定义函数")
+printme('再次调用同一函数')
+# python传不可变对象
+#在 python 中，strings, tuples, 和 numbers 是不可更改的对象，而 list,dict 等则是可以修改的对象。
+def change(a):
+    print(id(a))
+    a=10
+    print(id(a))
+a = 1
+print(id(a))
+change(a)
+```
+```python
+#在python中传递可变对象
+def changeme( mylist ):
+    mylist.append([1,2,3,4])
+    print('函数内取值：', mylist)
+    return
+mylist = [10,20,30]
+changeme(mylist)
+print('函数外取值：',mylist)
+```
+```python
+# 参数
+# 可写函数
+def printme( str ):
+    print(str)
+    return
+printme()
+```
+```python
+# 关键字参数
+def printinfo( name,age ):
+    print('名字：',name )
+    print('年龄：',age )
+    return
+printinfo( age=50,name='runoob')
+```
+```python
+#默认参数
+def printinfo(name , age = 35):
+    "打印任何传入的字符串"
+    print('名字' , name )
+    print('年龄' , age)
+printinfo( age=50 , name = 'runoob')
+print('---------------------------------')
+printinfo(name = 'runoob')
+```
+```python
+#不定长参数
+def printinfo( arg1,*vartuple):
+    print('输出：')
+    print(arg1)
+    print(vartuple)
+printinfo(70,60,50)
+
+def printinfo( arg1,*vartuple):
+    print('输出：')
+    print(arg1)
+    for var in vartuple:
+        print(var)
+    return
+printinfo( 10 )
+printinfo(70,60,50)
+```
+```python
+#加了两个星号 ** 的参数会以字典的形式导入。
+def printinfo(arg1,**vardict):
+    print('输出')
+    print(arg1)
+    print(vardict)
+printinfo(1,a=2,b=3)
+```
+```python
+#匿名函数
+x = lambda a : a + 10
+print(x(5))
+
+#将匿名函数封装在函数中
+def myfunc(n):
+    return lambda a:a*n
+mydoubler = myfunc(2)
+mytripler = myfunc(3)
+print(mydoubler(11))
+print(mytripler(22))
+```
+```python
+
+#return 语句
+def sum(arg1,arg2):
+    total = arg1 +arg2
+    print("函数内：",total)
+    return total
+total = sum(10,20)
+print('函数外:', total )
+```
+```python
+
+#强制位置参数
+def f(a,b,/,c,d,*,e,f):
+    print(a,b,c,d,e,f)
+f(10,20,30,d=40,e=50,f=60)
+```
+
+## 数据结构
+```python
+#list.count(x)x出现的次数
+a=[66.25,333,333,1,1234.5]
+print(a.count(333),a.count(1),a.count('x'))
+#将列表当做堆栈使用, append()可以添加一个元素到堆栈,pop() 方法可以把一个元素从堆栈顶释放出来
+stack = [3,4,5]
+stack.append(6)
+stack.append(7)
+print(stack)
+print(stack.pop())
+print(stack)
+print(stack.pop())
+print(stack)
+print(stack.pop())
+print(stack)
+```
+```python
+#把列表当作队列
+from collections import deque
+queue = deque(['Eric','John','Michael'])
+queue.append('Terry')
+queue.append('Graham')
+print(queue.popleft())
+print(queue.popleft())
+print(queue)
+```
+```python
+#列表推导式
+vec  = [2,4,6]
+print([3*x for x in vec])
+print([[x,x**2] for x in vec])
+
+freshfruit = ['banana','loganberry','passion fruit']
+print([weapon.strip() for weapon in freshfruit])
+```
+```python
+#嵌套式列表解析
+matrix = [
+    [1,2,3,4],
+    [5,6,7,8],
+    [9,10,11,12],
+]
+print([[row[i] for row in matrix] for i in range(4)]  )
+
+transposed = []
+for i in range(4)
+    transposed_row = []
+    for row in matrix:
+        transposed_row.append(row[i])
+    transposed.append(transposed_row)
+print(transposed)
+```
+```python
+#del语句
+a = [-1,1,66.25,333,333,1234.5]
+del a[0]
+print(a)
+del a[2:4]
+print(a)
+del a[:]
+print(a)
+```
+```python
+#元组和序列
+t = 12345,54321,'hello'
+print(t[0])
+print(t)
+u = t , (1,2,3,4,5,)
+print(u)
+```
+```python
+#集合
+basket = {'apple','orange','apple','pear','orange','banana'}
+print(basket)
+a = set('abracadabra')
+b = set('alacazam')
+print(a)
+print(a-b)
+print(a|b)
+print(a&b)
+print(a^b)
+```
+```python
+#字典
+tel = {'jack':4098,'sape':4139}
+tel['guido'] =4127
+print(tel)
+print(list(tel.keys()))
+print(sorted(tel.keys()))
+```
+```python
+#遍历技巧
+knights = {'gallahad':'the pure','robin':'the brave'}
+for k,v in knights.items():
+    print(k,v)
+
+for i,v in enumerate(['tic','tac','toe']):
+    print(i,v)
+
+questions = ['name','quest','favorite color']
+answers = ['lancelot','the holy grail','blue']
+for q,a in zip(questions,answers):
+    print('what is your {0}? it is {1}.'.format(q,a))
+
+for i in reserved(range(1,10,2)):
+    print(i)
+
+basket = ['apple','orange','apple','pear','orange','banana']
+for f in sorted(set(basket)):
+    print(f)
+```
+
 
