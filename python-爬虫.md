@@ -1160,5 +1160,318 @@ basket = ['apple','orange','apple','pear','orange','banana']
 for f in sorted(set(basket)):
     print(f)
 ```
+# 模块
+```python
+import sys
+print('命令行参数如下：')
+for i in sys.argv:
+    print(i)
+print('\n\npython 路径为：',sys.path,'\n')
 
+def print_func(par):
+    print('hello:',par)
+    return
+```
+
+# 输入和输出
+```python
+s = 'hello,runoob'
+str(s)
+repr(s)
+str(1/7)
+x = 10 * 3.25
+y = 200*200
+s = 'x的值为：'+repr(x) +',y的值为：'+repr(y)+'...'
+print(s)
+...hello = 'hello,runoob\n'
+hellos = repr(hello)
+print(hellos)
+'hello,runoob\n'
+repr((x,y,('google','runoob')))
+
+for x in range(1,11):
+    print(repr(x).rjust(2),repr(x*x).rjust(3),end='')
+    print(repr(x*x*x).rjust(4))
+
+for x in range(1,11):
+    print('{0:2d} {1:3d} {2:4d}'.format(x,x*x,x*x*x))
+
+'12'.zfill(5)
+
+print('{}网址："{}"!'.format('菜鸟教程','www.cainiao.com'))
+print('{}wangzhi:"{}"!'.format('cainiaojiaocheng','www.cainiao.com'))
+
+print('{0}和{1}'.format('google','runoob'))
+print('{1}和{0}'.format('google','runoob'))
+
+print('{name}网址：{site}'.format(name = '菜鸟教程',site = 'www.runoob.com'))
+
+print('站点列表{0},{1},和{other}.'.format('google','runoob',other = 'taobao'))
+
+import math
+print('常量PI的近似值为：{}。'.format(math.pi))
+print('常量PI的近似值为：{!r}。'.format(math.pi))
+
+import math
+print('常量PI的近似值为{0:.3f}。'.format(math.pi))
+
+table = {'google':1,'runoob':2,'taobao':3}
+for name,number in table.items():
+    print('{0:10} ==> {1:10d}'.format(name,number))
+
+table = {'google':1,'runoob':2,'taobao':3}
+print('runoob:{0[runoob]:d};google:{0[google]:d};taobao:{0[taobao]:d}'.format(table))
+
+table = {'google':1,'runoob':2,'taobao':3}
+print('runoob:{runoob:d};google:{google:d};taobao:{taobao:d}'.format(**table))
+```
+
+# 旧式字符串格式化
+```python
+import math
+print('常量PI的近似值为：%5.3f' % math.pi)
+```
+
+# 读取键盘输入
+```python
+str = input('请输入：');
+print('你输入的内容是：',str)
+```
+
+# 读和写文件
+```python
+#python实例
+#hello world
+print('hello world!')
+```
+# 数字求和
+```python
+num1 = input('输入第一个数字：')
+num2 = input('输入第二个数字：')
+
+sum = float(num1) + float(num2)
+print('数字{0}和{1}的相加结果为:{2}'.format(num1,num2,sum))
+
+#python 平方根,格式化辅助命令  m.n   m 是显示的最小总宽度，n 是小数点后的位数
+num = float(input('请输入一个数字：'))
+num_sqrt = num ** 0.5
+print('%0.3f的平方根为%0.3f'%(num,num_sqrt))
+
+##计算负数
+import cmath
+num = float(input('请输入一个数字：'))
+num_sqrt  = cmath.sqrt(num)
+print('{0}的平方根为{1：0.3f}+{2:0.3f}j'.format(num,num_sqrt.real,num_sqrt.imag))
+```
+
+# 二次方程
+```python
+import cmath
+a = float(input('输入a=:'))
+b = float(input('输入b=：'))
+d = (b**2) - (4*a*c)
+sol1 = (-b-cmath.sqrt(d))/(2*a)
+sol2 = (-b+cmath.sqrt(d))/(2*a)
+print('结果为{0}和{1}'.format(sol1,sol2))
+```
+
+# 计算三角形面积
+```python
+a = float(input('输入三角形的第一边长：'))
+b = float(input('输入三角形的第二边长：'))
+c = float(input('输入三角形的第三边长：'))
+s = (a+b+c)/2
+area = (s*(s-a)*(s-b)*(s-c))**0.5
+print('三角形的面积为%0.2f'%area )
+```
+
+# 计算圆的面积
+```python
+def findarea(r):
+    PI = 3.142
+    return PI*(r*r)
+
+print('圆的面积为%.6f'%findarea(5))
+```
+
+# 随机数生成
+```python
+import random
+print(random.randint(0,9))
+```
+
+# 摄氏温度转华氏温度
+```python
+celsius = float(input('输入摄氏温度:'))
+fahrenheit = (celsius * 1.8) +32
+print('%0.1f 摄氏温度转华氏温度为 %0.1f'%(celsius,fahrenheit))
+```
+
+# 交换变量
+```python
+x = input('输入x值：')
+y = input('输入y值为：')
+temp = x
+x=y
+y = temp
+print('交换后x的值为：{}'.format(x))
+print('交换后y的值为：{}'.format(y))
+## 不使用临时变量交换
+x = input('输入x值：')
+y = input('输入y值为：')
+x,y = y,x
+print('交换后x的值为：{}'.format(x))
+print('交换后y的值为：{}'.format(y))
+```
+# if语句
+```python
+num = float(input('输入一个数字：'))
+if num > 0 :
+    print("正数")
+elif num == 0:
+    print('零')
+else:
+    print('负数')
+
+##内嵌if语句
+num = float(input('输入一个数字：'))
+if num>= 0:
+    if num == 0:
+        print('零')
+    else:
+        print('正数')
+else:
+    print('负数')
+    
+```
+
+# 判断字符串是否为数字
+```python
+def is_number(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        pass
+
+    try:
+        import unicodedata
+        unicodedata.numeric(s)
+        return True
+    except(TypeError,ValueError):
+        pass
+    return False
+ ```
+
+# 判断奇数偶数
+```python
+num = int(input('输入一个数字：'))
+if(num% 2) == 0:
+    print('{0}是偶数'.format(num))
+else:
+    print('{0}是奇数'.format(num))
+```
+# 判断闰年
+```python
+year = int(input('请输入一个年份：'))
+if (year % 4) == 0:
+    if(year % 100) == 0:
+        if(year % 400)==0:
+            print('{0}是闰年'.format(year))
+        else:
+            print('{0}不是闰年'.format( year ))
+    else:
+        print("{0}是闰年".format( year ))
+else:
+    print('{0}不是闰年'.format( year ))
+ ```
+
+# 获取最大函数值
+```python
+print('80,100,200最大值为：',max(80,100,200))
+```
+# 质数判断
+```python
+num = int(input('请输入一个数字：'))
+if num > 1:
+    for i in range(2,num):
+        if (num % i )==0
+            print(num,'不是质数')
+            print(i,'乘于',num//i,'是',num)
+            break
+    else:
+        print(num,'是质数')
+else:
+    print(num,'不是质数')
+```
+
+# 输出指定范围的素数
+```python
+lower = int(input('请输入区间最小值：'))
+upper = int(input('请输入区间最大值：'))
+for num in range(lower,upper+1):
+    if num > 1:
+        for i in range(2,num):
+            if (num % i) == 0:
+                break
+        else:
+            print(num)
+```
+# python阶乘实例
+```python
+num = int(input('请输入一个数字：'))
+factorial = 1
+if num < 0:
+    print('抱歉，负数没有阶乘')
+elif num == 0:
+    print('0的阶乘为1')
+else:
+    for i in range(1,num+1):
+        factorial = factorial * i
+    print('%d的阶乘为%d'%(num,factorial))
+```
+# 九九乘法表
+```python
+for i in range(1,10):
+    for j in range(1,i+1):
+        print('{}X{}={}\t'.format(j,i,i*j),end='')
+    print()
+```
+
+# 斐波那契数列
+```python
+nterms = int(input('你需要几项？'))
+n1 = 0
+n2 = 1
+count = 2
+if nterms <= 0 :
+    print('请输入一个正整数。')
+elif nterms == 1:
+    print('斐波那契数列：')
+    print(n1)
+else:
+    print('斐波那契数列：')
+    print(n1,',',n2,end=',')
+    while count < nterms:
+        nth = n1 + n2
+        print(nth,end=',')
+        n1 = n2
+        n2 = nth
+        count += 1
+ ```
+# 阿姆斯特朗数
+```python
+num = int(input('请输入一个数字：'))
+sum = 0
+n = len(str(num))
+temp = num
+while temp > 0 :
+    digit = temp % 10
+    sum = + digit ** n
+    temp //= 10
+if num == sum:
+    print(num,'是阿姆斯特朗数')
+else:
+    print(num,'不是阿姆斯特朗数')
+```
 
